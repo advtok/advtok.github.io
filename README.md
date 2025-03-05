@@ -4,7 +4,15 @@ This is the repository that contains source code for the [Adversarial Tokenizati
 
 If you find adversarial tokenization useful for your work please cite:
 ```
-Placeholder
+@misc{geh2025adversarialtokenization,
+      title={Adversarial Tokenization}, 
+      author={Renato Lui Geh and Zilei Shao and Guy Van den Broeck},
+      year={2025},
+      eprint={2503.02174},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2503.02174}, 
+}
 ```
 
 # Website License

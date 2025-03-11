@@ -138,11 +138,6 @@
       </div>
     </div>
   </div>
-
-  <!-- TL;DR Section -->
-  <div class="content is-size-5 has-text-centered" style="margin: 4em 0;">
-    <em>We show a previously unknown vulnerability of LLMs in addressing tokenization attacks whereby simply retokenizing an unsafe request elicits dangerous responses in state-of-the-art LLMs.</em>
-  </div>
 </section>
 
 <section class="section">
@@ -151,6 +146,10 @@
 
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
+          <!-- TL;DR Section -->
+        <div class="content is-size-5 has-text-centered">
+          <em>We show a previously unknown vulnerability of LLMs in addressing tokenization attacks whereby simply retokenizing an unsafe request elicits dangerous responses in state-of-the-art LLMs.</em>
+        </div>
         <h3 class="title is-4">Canonical Tokenization (🚫 Blocked)</h3>
         <div class="publication-image">
           <img src="./static/images/safe.gif" alt="Canonical Tokenization" class="responsive-image" loop autoplay style="max-width: 700px;">
@@ -196,7 +195,7 @@
     <!-- Introduction -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title">Introduction</h2>
+        <h2 class="title is-4">Introduction</h2>
         <div class="content has-text-justified">
           <p>
             Tokenization is a critical but often overlooked component of Large Language Model (LLM) pipelines. A <strong>canonical tokenization</strong> is the standard way a tokenizer segments a given string, while <strong>noncanonical tokenizations</strong> are alternative segmentations that the tokenizer could have chosen but didn't. 

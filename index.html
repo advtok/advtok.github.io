@@ -252,7 +252,7 @@
             To test the hypothesis that noncanonical tokenizations to possibly evade alignment by accessing the distribution conditioned on them, we sample tokenizations of a malicious question from different distances and evaluate whether the LLM faithfully answers the malicious request.
           </p>
           <p>
-            We evaluate responses with StrongREJECT, an evaluation framework for malicious requests that more reliably captures these cases.
+            We evaluate responses with StrongREJECT (ranging from 0 to 1; higher scores indicate more accurate nonrefusal responses that are relevant to the question).
             <div class="columns is-centered has-text-centered">
               <div class="column is-four-fifths">
                 <div class="publication-image">
@@ -262,11 +262,96 @@
             </div>
           </p>
           <p>
-            Unsurprisingly, the canonical tokenization tends to have the lowest scores. Notably though, distance from canonicity seems to play a role in how well it performs against complying to a malicious request, meaning that by simply sampling tokenizations at a sufficiently large distance from the canonical we can successfully provoke unsafe responses from LLMs.</p>
+            Unsurprisingly, the canonical tokenization tends to have the lowest scores. Notably though, distance from canonicity seems to play a role in how well it performs against complying to a malicious request, meaning that by simply sampling tokenizations at a sufficiently large distance from the canonical we can successfully provoke unsafe responses from LLMs.
+          </p>
         </div>
       </div>
     </div>
     <!--/ Evades safety -->
+
+    <!-- Adversarial Tokenization Algorithm -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Adversarial Tokenization</h2>
+        <div class="content has-text-justified">
+          <p>
+            To reliably find such tokenizations that evade from safety constraints, we devise a simple yet effective local search algorithm for adversarially finding tokenizations that elicit a desired behavior from the LLM.
+          </p>
+          <p>
+            Because the problem was proven to be NP-hard, this greedy approach picks small local changes at each iteration to produce a tokenization maximizing the probability of generating a given malicious response. We refer interested readers to the paper for full details and proofs.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- /Adversarial Tokenization Algorithm -->
+
+    <!-- Case Studies -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Case Studies</h2>
+        <div class="content has-text-justified">
+
+          <!-- Jailbreaking -->
+          <h3 class="title is-5">Jailbreaking</h3>
+          <p>
+            In the jailbreaking task, given a malicious request, the goal is to construct an attack input prompt that successfully provokes the LLM to output a response that faithfully answers the prompt.
+          </p>
+          <p>
+            We compare our method against three other jailbreak methods: GCG, AutoDAN, and FFA.
+          </p>
+          <p>
+            Because Adversarial Tokenization does not change the underlying text of the request, we can further boost these three previous methods with ours by simply reusing the same adversarial tokenizations used on the malicious requests and plugging them into their attack templates or affixes.
+          </p>
+
+          <!-- Safety Model Evasion -->
+          <h3 class="title is-5">Evading Safety Models</h3>
+          <p>
+            We also show that adversarial tokenization increases the probability of bypassing the existing defense layers against malicious requests that reliably distinguish whether a prompt or response is (un)safe.
+          </p>
+          <p>
+            We evaluate both LlamaGuard and ShieldGemmam, and both safety models allow for computing the probability of a prompt being unsafe </p>
+          </p>
+          <p>
+            We classify a prompt as unsafe if given the prompt and safety guidelines, the probability of the prompt being unsafe given by the safe model is greater than 0.5, and safe otherwise.  Our results show that adversarial tokenization substantially increases the probability of bypassing these safety checks.
+          </p>
+
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <div class="publication-image">
+                <img src="./static/images/safety_evasion.png" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Prompt Injection -->
+          <h3 class="title is-5">Prompt Injection</h3>
+          <p>
+            This man-in-the-middle attack consists of a setting where a user inputs a harmless query to an LLM and a malicious agent intercepts it, possibly altering the user input to provoke a malicious response. Here, we specifically consider payloads that request the LLM to be toxic and offensive. We define success as an attack where the adversarial content is a substring of the generated response and does not produce refusal text, as shown below.
+          </p>
+          
+          <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <div class="publication-image">
+                  <img src="./static/images/prompt_injection_example.png" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
+                </div>
+              </div>
+            </div>
+          <p>
+
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <div class="publication-image">
+                  <img src="./static/images/prompt_injection.png" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
+                </div>
+              </div>
+            </div>
+          <p>
+            The above figure shows success rates for both canonical tokenization baseline and adversarial tokenization, revealing a consistent increase in success when using adversarial tokenization.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- /Case Studies -->
   </div>
 </section>
 

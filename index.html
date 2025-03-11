@@ -148,7 +148,7 @@
       <div class="column is-four-fifths">
         <h3 class="title is-4">Canonical Tokenization (🚫 Blocked)</h3>
         <div class="publication-image">
-          <img src="./static/images/safe.gif" alt="Canonical Tokenization" class="responsive-image" loop autoplay style="max-width: 750px;">
+          <img src="./static/images/safe.gif" alt="Canonical Tokenization" class="responsive-image" loop autoplay style="max-width: 700px;">
         </div>
       </div>
     </div>
@@ -157,7 +157,7 @@
       <div class="column is-four-fifths">
         <h3 class="title is-4">Adversarial Tokenization (🔓 Bypassed)</h3>
         <div class="publication-image">
-          <img src="./static/images/unsafe.gif" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 750px;">
+          <img src="./static/images/unsafe.gif" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 700px;">
         </div>
       </div>
     </div>
@@ -211,7 +211,7 @@
     <!-- Semantic Signal Retention -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title">Semantic Signal Retention</h2>
+        <h2 class="title is-4">Semantic Signal Retention</h2>
         <div class="content has-text-justified">
           <p>
             Despite only being trained on the canonical segmentation, we find that LLMs maintain an impressive grasp of noncanonical tokenizations. 
@@ -221,7 +221,7 @@
             <div class="columns is-centered has-text-centered">
               <div class="column is-four-fifths">
                 <div class="publication-image">
-                  <img src="./static/images/question.png" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
+                  <img src="./static/images/question.jpg" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
                 </div>
               </div>
             </div>
@@ -246,33 +246,23 @@
     <!-- Evades Safety -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title">Semantic Signal Retention</h2>
+        <h2 class="title is-4">Tokenizations Can Evade Safety</h2>
         <div class="content has-text-justified">
           <p>
-            Despite only being trained on the canonical segmentation, we find that LLMs maintain an impressive grasp of noncanonical tokenizations. 
+            To test the hypothesis that noncanonical tokenizations to possibly evade alignment by accessing the distribution conditioned on them, we sample tokenizations of a malicious question from different distances and evaluate whether the LLM faithfully answers the malicious request.
           </p>
           <p>
-            We measure this by quizzing the models with multiple-choice questions (example shown below) in which each question is tokenized more and more deviated from the canonical one.
+            We evaluate responses with StrongREJECT, an evaluation framework for malicious requests that more reliably captures these cases.
             <div class="columns is-centered has-text-centered">
               <div class="column is-four-fifths">
                 <div class="publication-image">
-                  <img src="./static/images/question.png" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
+                  <img src="./static/images/compliance.png" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
                 </div>
               </div>
             </div>
           </p>
           <p>
-            As expected, accuracy tends to drop when the tokenization deviates further from the canonical. More importantly, the trend is smooth in the sense that noncanonical tokenizations close to the canonical are not too noisy.
-          </p>
-        </div>
-
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <div class="publication-image">
-              <img src="./static/images/semantic_signal.jpg" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
-              <p class="caption">In the figure, the x-axis represents the normalized edit distance from the canonical tokenization (ranging from 0 to 1), capturing how far each alternative tokenization diverges in terms of insertions or substitution.</p>
-            </div>
-          </div>
+            Unsurprisingly, the canonical tokenization tends to have the lowest scores. Notably though, distance from canonicity seems to play a role in how well it performs against complying to a malicious request, meaning that by simply sampling tokenizations at a sufficiently large distance from the canonical we can successfully provoke unsafe responses from LLMs.</p>
         </div>
       </div>
     </div>

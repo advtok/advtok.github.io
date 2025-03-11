@@ -120,7 +120,7 @@
                 <span>arXiv</span>
               </a>
             </span>
-            <!-- Placeholder: Code Link. -->
+            <!-- Code Link. -->
             <span class="link-block">
               <a href="https://github.com/RenatoGeh/advtok/" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon"><i class="fab fa-github"></i></span>
@@ -137,6 +137,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- TL;DR Section -->
+  <div class="content is-size-5 has-text-centered" style="margin-top: 1em;">
+    <strong>TL;DR:</strong> We show a previously unknown vulnerability of LLMs in addressing tokenization attacks whereby simply retokenizing an unsafe request elicits dangerous responses in state-of-the-art LLMs.
   </div>
 </section>
 
@@ -303,16 +308,26 @@
             Because Adversarial Tokenization does not change the underlying text of the request, we can further boost these three previous methods with ours by simply reusing the same adversarial tokenizations used on the malicious requests and plugging them into their attack templates or affixes.
           </p>
 
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <div class="publication-image">
+                <img src="./static/images/jailbreak.png" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
+              </div>
+            </div>
+          </div>
+
+          Notably, our approach seems to perform especially well on Llama3, achieving best scores as a standalone attack and boosting the performance of other meth- ods when combined. In the case of both Gemma2 and OLMo2, Adversarial Tokenization by itself achieved competitive results against others, but especially shined when combined with AutoDAN.
+
           <!-- Safety Model Evasion -->
           <h3 class="title is-5">Evading Safety Models</h3>
           <p>
             We also show that adversarial tokenization increases the probability of bypassing the existing defense layers against malicious requests that reliably distinguish whether a prompt or response is (un)safe.
           </p>
           <p>
-            We evaluate both LlamaGuard and ShieldGemmam, and both safety models allow for computing the probability of a prompt being unsafe </p>
+            We evaluate both LlamaGuard and ShieldGemma, which allow for computing the probability of a prompt being unsafe </p>
           </p>
           <p>
-            We classify a prompt as unsafe if given the prompt and safety guidelines, the probability of the prompt being unsafe given by the safe model is greater than 0.5, and safe otherwise.  Our results show that adversarial tokenization substantially increases the probability of bypassing these safety checks.
+            Our results show that adversarial tokenization substantially increases the probability of bypassing these safety checks.
           </p>
 
           <div class="columns is-centered has-text-centered">
@@ -337,7 +352,9 @@
               </div>
             </div>
           <p>
-
+            <p>
+              The following figure shows success rates for both canonical tokenization baseline and adversarial tokenization, revealing a consistent increase in success when using adversarial tokenization.
+            </p>
             <div class="columns is-centered has-text-centered">
               <div class="column is-four-fifths">
                 <div class="publication-image">
@@ -345,13 +362,29 @@
                 </div>
               </div>
             </div>
-          <p>
-            The above figure shows success rates for both canonical tokenization baseline and adversarial tokenization, revealing a consistent increase in success when using adversarial tokenization.
-          </p>
         </div>
       </div>
     </div>
     <!-- /Case Studies -->
+
+    <!-- Discussion -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Discussion</h2>
+        <div class="content has-text-justified">
+          <p>
+            In this paper, we have shown how noncanonical tokenizations expose a serious vulnerability in LLM alignment for safety. Adversarial tokenization is able to access the out-of-distribution regions of alignment but remain close enough to the data distribution of the pre-trained LLM, allowing them to evade alignment and elicit unsafe behavior from models.
+          </p>
+          <p>
+            We argue that the problem lies deeper: the current LLM safety training pipeline is flawed. While in pre-training the semantics of a text ends up being leaked onto many tokenizations, allowing for meaningful responses from noncanonical tokenizations (as shown in Figure 4), the smaller scale of post-training might not allow for that, leading to adversarial tokenizations.
+          </p>
+          <p>
+            Our work exposes not only the vulnerability of LLMs against adversarial to- kenization, but also fundamental issues with the current LLM safety training pipeline.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Discussion -->
   </div>
 </section>
 

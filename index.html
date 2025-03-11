@@ -221,7 +221,7 @@
             <div class="columns is-centered has-text-centered">
               <div class="column is-four-fifths">
                 <div class="publication-image">
-                  <img src="./static/images/question.jpg" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
+                  <img src="./static/images/question.png" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
                 </div>
               </div>
             </div>
@@ -242,6 +242,41 @@
       </div>
     </div>
     <!--/ Semantic Signal Retention -->
+
+    <!-- Evades Safety -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title">Semantic Signal Retention</h2>
+        <div class="content has-text-justified">
+          <p>
+            Despite only being trained on the canonical segmentation, we find that LLMs maintain an impressive grasp of noncanonical tokenizations. 
+          </p>
+          <p>
+            We measure this by quizzing the models with multiple-choice questions (example shown below) in which each question is tokenized more and more deviated from the canonical one.
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <div class="publication-image">
+                  <img src="./static/images/question.png" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
+                </div>
+              </div>
+            </div>
+          </p>
+          <p>
+            As expected, accuracy tends to drop when the tokenization deviates further from the canonical. More importantly, the trend is smooth in the sense that noncanonical tokenizations close to the canonical are not too noisy.
+          </p>
+        </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <div class="publication-image">
+              <img src="./static/images/semantic_signal.jpg" alt="Adversarial Tokenization" class="responsive-image" loop autoplay style="max-width: 600px;">
+              <p class="caption">In the figure, the x-axis represents the normalized edit distance from the canonical tokenization (ranging from 0 to 1), capturing how far each alternative tokenization diverges in terms of insertions or substitution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Evades safety -->
   </div>
 </section>
 

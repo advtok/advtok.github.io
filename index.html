@@ -203,7 +203,7 @@
             Our work focuses on how these alternative, or “noncanonical,” tokenizations preserve meaning, and can be manipulated to bypass safety filters without altering the original text. By forcing models to act on tokenizations they never saw during training, we can evade alignment safeguards and prompt harmful responses. 
           </p>
           <p>
-            This phenomenon, which we call <strong>Adversarial Tokenization</strong>, exposes not only the vulnerability of LLMs against adversarial tokenization, but also fundamental issues with the current LLM safety training pipeline.
+            This phenomenon exposes not only the vulnerability of LLMs against <strong>adversarial tokenization</strong>, but also fundamental issues with the current LLM safety training pipeline.
           </p>
         </div>
       </div>
@@ -302,7 +302,7 @@
             We compare our method against three other jailbreak methods: GCG, AutoDAN, and FFA.
           </p>
           <p>
-            Because Adversarial Tokenization does not change the underlying text of the request, we can further boost these three previous methods with ours by simply reusing the same adversarial tokenizations used on the malicious requests and plugging them into their attack templates or affixes.
+            Because adversarial tokenization does not change the underlying text of the request, we can further boost these three previous methods with ours by simply reusing the same adversarial tokenizations used on the malicious requests and plugging them into their attack templates or affixes.
           </p>
 
           <div class="columns is-centered has-text-centered">
@@ -313,7 +313,7 @@
             </div>
           </div>
 
-          Notably, our approach seems to perform especially well on Llama3, achieving best scores as a standalone attack and boosting the performance of other methods when combined. In the case of both Gemma2 and OLMo2, Adversarial Tokenization by itself achieved competitive results against others, but especially shined when combined with AutoDAN.
+          Notably, our approach seems to perform especially well on Llama3, achieving best scores as a standalone attack and boosting the performance of other methods when combined. In the case of both Gemma2 and OLMo2, adversarial tokenization by itself achieved competitive results against others, but especially shined when combined with AutoDAN.
 
           <!-- Safety Model Evasion -->
           <h3 class="title is-5">Evading Safety Models</h3>
